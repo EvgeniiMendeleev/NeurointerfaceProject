@@ -56,8 +56,13 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\AngryObject.cs" />
+     <Compile Include="Assets\Scripts\HidingObject.cs" />
+     <Compile Include="Assets\Scripts\JumpingObject.cs" />
      <Compile Include="Assets\Scripts\Libraries\NeuroDevice.cs" />
      <Compile Include="Assets\Scripts\PlayerScript.cs" />
+     <Compile Include="Assets\Scripts\RotatingObject.cs" />
+     <Compile Include="Assets\Scripts\SelectableObject.cs" />
+     <Compile Include="Assets\Scripts\WonkaBlueberryObject.cs" />
  <Reference Include="UnityEngine">
  <HintPath>D:/Unity3D/GamesFromUnity/2019.4.3f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
