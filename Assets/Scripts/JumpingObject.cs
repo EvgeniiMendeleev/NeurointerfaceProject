@@ -6,7 +6,7 @@ public class JumpingObject : MonoBehaviour
 {
     public void GetUp(int level)
     {
-        if (level > 80)
+        if (level > 50)
         {
             gameObject.GetComponent<Rigidbody>().AddForce(Vector3.up, ForceMode.Impulse);
         }

@@ -7,16 +7,28 @@ using Neurointerface;
 public class PlayerScript : MonoBehaviour
 {
     private NeuroDevice device = new NeuroDevice("COM5");
-    [Range(0,100)] public int level;
     [SerializeField] private Text levelMindText;
+    [SerializeField] private string brainState = "attention";
+
     void Start()
     {
-        //while (!device.isConnection()) device.OpenConnection();
+        try
+        {
+            device.OpenConnection();
+        }
+        catch (System.Exception exp)
+        {
+            Debug.LogError($"[Neurointerface]: {exp.Message}. Проверьте подключение!");
+        }
     }
 
     void LateUpdate()
     {
-        levelMindText.text = $"{level.ToString()} %";
+        if (!device.isConnection()) return;
+
+        int level = device.GetBrainDataAbout(brainState);
+        levelMindText.text = $"{level} %";
+
         Ray ray = new Ray(transform.position, transform.forward);
         Debug.DrawRay(transform.position, transform.forward * 100.0f, Color.green);
         if (Physics.Raycast(ray, out RaycastHit hit))

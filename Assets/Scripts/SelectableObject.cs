@@ -9,7 +9,7 @@ public class SelectableObject : MonoBehaviour
 
     public void TakeObject(Vector3 playerPosition, Vector3 forwardVector, int level)
     {
-        if (level > 70)
+        if (level > 50)
         {
             gameObject.transform.position = playerPosition + forwardVector * distance;
         }

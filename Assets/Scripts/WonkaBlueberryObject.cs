@@ -12,7 +12,7 @@ public class WonkaBlueberryObject : MonoBehaviour
 
     public void SwellUp(int level)
     {
-        if (level > 80)
+        if (level > 30)
         {
             gameObject.GetComponent<Renderer>().material.color = Color.blue;
             gameObject.transform.localScale *= 1.002f;

@@ -11,8 +11,8 @@ public class AngryObject : MonoBehaviour
 
     public void GetAngry(int level)
     {
-        if (level >= 50 && level < 70) gameObject.GetComponent<Renderer>().material.color = Color.yellow;
-        else if (level >= 70 && level < 90) gameObject.GetComponent<Renderer>().material.color = Color.red;
-        else if(level >= 90) Destroy(gameObject);
+        if (level >= 20 && level < 40) gameObject.GetComponent<Renderer>().material.color = Color.yellow;
+        else if (level >= 40 && level < 60) gameObject.GetComponent<Renderer>().material.color = Color.red;
+        else if(level >= 70) Destroy(gameObject);
     }
 }

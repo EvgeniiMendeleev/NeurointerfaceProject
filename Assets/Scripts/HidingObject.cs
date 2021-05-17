@@ -6,7 +6,7 @@ public class HidingObject : MonoBehaviour
 {
     public void Hide(Vector3 playerPosition, Vector3 forwardVector, int level)
     {
-        if (level > 80)
+        if (level > 50)
         {
             gameObject.transform.position = playerPosition - forwardVector * 2.0f;
         }
