@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class WonkaBlueberryObject : MonoBehaviour
 {
-
     void Update()
     {
         gameObject.GetComponent<Renderer>().material.color = Color.white;
