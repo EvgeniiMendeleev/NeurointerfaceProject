@@ -7,7 +7,7 @@ namespace Neurointerface
 {
     class NeuroDevice
     {
-        const char EXCODE = '\x55', SYNC = '\xAA', ASIC_EEG_POWER_INT = '\x83', POOR_SIGNAL = '\x02', ATTENTION = '\x04', MEDITATION = '\x05', RAW_WAVE_VALUE = '\x80';
+        const char EXCODE = '\x55', SYNC = '\xAA', ASIC_EEG_POWER_INT = '\x83', POOR_SIGNAL = '\x02', ATTENTION = '\x04', MEDITATION = '\x05';
 
         static Mutex mtx = new Mutex();
         private Dictionary<string, int> currentBrainData = new Dictionary<string, int>();
@@ -135,13 +135,12 @@ namespace Neurointerface
                 while (payload[bytesParsed] == EXCODE) bytesParsed++;
 
                 int code = payload[bytesParsed++];
-                int vLength = Convert.ToBoolean(code & RAW_WAVE_VALUE) ? payload[bytesParsed++] : 1;
+                int vLength = Convert.ToBoolean(code & '\x80') ? payload[bytesParsed++] : 1;
 
                 if (code == ASIC_EEG_POWER_INT) SaveBrainDataAboutASIG(payload, bytesParsed);
                 else if (code == MEDITATION) SaveBrainDataAbout("meditation", payload[bytesParsed]);
                 else if (code == ATTENTION) SaveBrainDataAbout("attention", payload[bytesParsed]);
                 else if (code == POOR_SIGNAL) SaveBrainDataAbout("poor_signal", payload[bytesParsed]);
-                else if (code == RAW_WAVE_VALUE) SaveBrainDataAbout("raw_wave_value", (payload[bytesParsed] << 8) | payload[bytesParsed + 1]);
 
                 bytesParsed += vLength;
             }
